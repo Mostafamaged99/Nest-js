@@ -5,12 +5,13 @@ import { SignInService } from './sign-in/sign-in.service';
 import { SignInController } from './sign-in/sign-in.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/core/schemas/user.schema';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [SignupController, SignInController],
-  providers: [SignupService, SignInService],
+  providers: [SignupService, SignInService, JwtService],
 })
 export class AuthModule {}
